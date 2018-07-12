@@ -1,6 +1,8 @@
 
 package com.turtlebone.choice.service;
 
+import java.util.List;
+
 import com.turtlebone.choice.model.ActivityModel;
 
 public interface ActivityService{
@@ -20,4 +22,7 @@ public interface ActivityService{
 
 	public int selectCount(ActivityModel activityModel);
 	
+	public List<ActivityModel> selectByCondition(String username, String type,
+			Integer result1, Integer result2,  Integer result3,  
+			String from, String to, Integer size, Integer offset);
 }

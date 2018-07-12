@@ -1,9 +1,13 @@
 
 package com.turtlebone.choice.service.impl;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.util.StringUtils;
 
 import com.turtlebone.choice.entity.Activity;
 import com.turtlebone.choice.repository.ActivityRepository;
@@ -93,5 +97,33 @@ public class ActivityServiceImpl implements ActivityService {
 	}
 
 
+	@Override
+	public List<ActivityModel> selectByCondition(String username, String type, 
+			Integer result1, Integer result2,  Integer result3,
+			String from, String to, Integer pageSize, Integer offset) {
+		Map<String, Object> map = new HashMap<>();
+		if (!StringUtils.isEmpty(username)) {
+			map.put("username", username);
+		}
+		if (!StringUtils.isEmpty(type)) {
+			map.put("type", type);
+		}
+		map.put("result1", result1);
+		map.put("result2", result2);
+		map.put("result3", result3);
+		if (!StringUtils.isEmpty(from) && !StringUtils.isEmpty(to)) {
+			map.put("from", from);
+			map.put("to", to);
+		}
+		if (pageSize != null && offset != null) {
+			map.put("offset", offset);
+			map.put("pageSize", pageSize);
+		} else {
+			map.put("offset", 0);
+			map.put("pageSize", 0);
+		}
+		List<Activity> list = activityRepo.selectByCondition(map);
+		return BeanCopyUtils.mapList(list, ActivityModel.class);
+	}
 
 }

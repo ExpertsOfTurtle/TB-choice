@@ -2,6 +2,8 @@ package com.turtlebone.choice.repository;
 
 import com.turtlebone.choice.entity.Activity;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
@@ -27,4 +29,5 @@ public interface ActivityRepository{
 
     List<Activity> selectPage(@Param("activity") Activity activity, @Param("pageable") Pageable pageable);
 	
+    List<Activity> selectByCondition(Map map);
 }
