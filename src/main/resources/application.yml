@@ -50,7 +50,6 @@ spring:
     resourceLoaderPath: classpath:templates/
     suffix: .vm
   jmx.default-domain: choice.turtlebone
-  constants.excludeRegex: choose|wx
 server:
   port: 12009
   contextPath: /choice/
@@ -60,5 +59,4 @@ redis.expireTime: 3600
 constants:
   excludeRegex: choose|wx
 core.basehost: http://turtlebone.top
-constants.excludeRegex: choose|wx
 ---
