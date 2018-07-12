@@ -27,6 +27,7 @@ mybatis:
 redis.expireTime: 60
 constants:
   excludeRegex: choose|wx
+core.basehost: http://localhost
 ---
 spring:
   profiles: prod
@@ -49,6 +50,7 @@ spring:
     resourceLoaderPath: classpath:templates/
     suffix: .vm
   jmx.default-domain: choice.turtlebone
+  constants.excludeRegex: /root
 server:
   port: 12009
   contextPath: /choice/
@@ -57,3 +59,6 @@ mybatis:
 redis.expireTime: 3600
 constants:
   excludeRegex: choose|wx
+core.basehost: http://turtlebone.top
+constants.excludeRegex: /root
+---
